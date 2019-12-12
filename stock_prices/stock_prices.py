@@ -8,8 +8,14 @@ def find_max_profit(prices):
         if price > highest:
             highest = price
     indexOfHighest = prices.index(highest)
-
     length = len(prices) - 1
+    if indexOfHighest == 0:
+        nextHighest = 0
+        for i in range(length):
+            if prices[i+1] > nextHighest:
+                nextHighest = prices[i+1]
+        return nextHighest - highest
+
     lowest = highest
     for i in range(length):
         if i < indexOfHighest:
