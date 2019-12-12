@@ -3,26 +3,20 @@
 import argparse
 
 def find_max_profit(prices):
-    # creates new copy of original order of prices
-    original = [] + prices
-    # sorts prices in ascending order
-    prices.sort()
-    # points to the highest value price
-    lastIndex = len(prices) - 1
-    highest = prices[lastIndex]
+    highest = 0
+    for price in prices:
+        if price > highest:
+            highest = price
+    indexOfHighest = prices.index(highest)
 
-    # find the index of the highest value in the original order
-    indexOfOriginal = original.index(highest)
-    lowest = highest
     length = len(prices) - 1
+    lowest = highest
     for i in range(length):
-        if i < indexOfOriginal:
-            if original[i] < lowest:
-                lowest = original[i]
-                print(lowest)
-
-
+        if i < indexOfHighest:
+            if prices[i] < lowest:
+                lowest = prices[i]
     return highest - lowest
+
 
 if __name__ == '__main__':
   # This is just some code to accept inputs from the command line
