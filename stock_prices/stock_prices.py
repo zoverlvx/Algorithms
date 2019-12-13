@@ -4,24 +4,13 @@ import argparse
 
 def find_max_profit(prices):
     highest = 0
-    for price in prices:
-        if price > highest:
-            highest = price
+    for i in range(1, len(prices)):
+        if prices[i] > highest:
+            highest = prices[i]
     indexOfHighest = prices.index(highest)
-    length = len(prices) - 1
-    if indexOfHighest == 0:
-        nextHighest = 0
-        for i in range(length):
-            if prices[i+1] > nextHighest:
-                nextHighest = prices[i+1]
-        return nextHighest - highest
-
-    lowest = highest
-    for i in range(length):
-        if i < indexOfHighest:
-            if prices[i] < lowest:
-                lowest = prices[i]
-    return highest - lowest
+    profits_losses = [highest - price for price in prices[:indexOfHighest]]
+    profits_losses.sort()
+    return profits_losses[-1]
 
 
 if __name__ == '__main__':
