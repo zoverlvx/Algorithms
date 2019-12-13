@@ -10,8 +10,8 @@ def rock_paper_scissors(n):
             rps(n - 1, prefix + ["rock"])
             rps(n - 1, prefix + ["paper"])
             rps(n - 1, prefix + ["scissors"])
-        rps(n)
-        return perms
+    rps(n)
+    return perms
 
 
 if __name__ == "__main__":
