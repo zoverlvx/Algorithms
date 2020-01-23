@@ -25,7 +25,9 @@ def eating_cookies(n, cache=None):
 
 def eating_cookies(n, cache={}):
 	# base cases
-	if n == 0:
+	if n < 0:
+		return 0
+	elif n == 0:
 		return 1
 	elif n < 3:
 		return n
