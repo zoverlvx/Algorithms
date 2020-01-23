@@ -6,8 +6,17 @@ from collections import namedtuple
 Item = namedtuple('Item', ['index', 'size', 'value'])
 
 def knapsack_solver(items, capacity):
-  pass
-  
+    profitable = []
+    for item in items:
+        if item[1] < item[2]:
+            difference = item[2] - item[1]
+            print(F"Penalty: {item[1]}", F"Value: {item[2]}", F"ROI: {difference}", F"Room left: {capacity - item[1]}")
+            profitable.append((item[0], item[1], item[2], difference))
+
+
+    print("Profitable items: ", profitable)
+    print("Here is capacity", capacity)
+
 
 if __name__ == '__main__':
   if len(sys.argv) > 1:
